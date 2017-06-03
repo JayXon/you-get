@@ -59,6 +59,11 @@ def video_info(vid,**kwargs):
     info=json.loads(str(r,"utf-8"))
     info = info['msgs']
 
+    if 'playurl' not in info:
+        url = 'http://www.xn--yuk-6na13b.com/proxy/http/' + url[7:]
+        r = get_content(url, decoded=False)
+        info = json.loads(str(r, "utf-8"))
+        info = info['msgs']
 
     stream_id = None
     support_stream_id = info["playurl"]["dispatch"].keys()
